@@ -44,13 +44,33 @@ filesystem:
 #
 # config_schema:
 #  - ["debug.level", 3]
-
+config_schema:
+  - ["mqtt.enable", true]
+  - ["mqtt.ssl_cert", "aiot-certificate.crt"]
+  - ["mqtt.ssl_key", "aiot-private.key"]
+  - ["mqtt.ssl_ca_cert", "ca.pem"]
+  - ["aws.thing_name", "Facebook_10212683421500597_GardenIrrigator"]
+  - ["mqtt.pub", "s", "aiot/response", {title: "Publish topic"}]
+  - ["mqtt.sub", "s", "aiot/request", {title: "Subscribe topic"}]
+  - ["mqtt.server", "a3vgppxo7lddg8-ats.iot.ap-southeast-2.amazonaws.com:8883"]
+  - ["device.id", "GardenIrrigator"]
+  - ["i2c.enable", true]
+  - ["wifi.ap.enable", false]
+  - ["wifi.sta.enable", true]
+  - ["wifi.sta.ssid", "OPTUSVD3645A90"]
+  - ["wifi.sta.pass", "GLOZECOOPS04188"]
+  
 libs:
   - origin: https://github.com/mongoose-os-libs/boards
   - origin: https://github.com/mongoose-os-libs/ca-bundle
   - origin: https://github.com/mongoose-os-libs/rpc-service-config
   - origin: https://github.com/mongoose-os-libs/rpc-service-fs
   - origin: https://github.com/mongoose-os-libs/rpc-uart
+  - origin: https://github.com/mongoose-os-libs/rpc-service-i2c
+  - origin: https://github.com/mongoose-os-libs/wifi
+  - origin: https://github.com/mongoose-os-libs/aws
+build_vars:
+  SSL: mbedTLS
 
 # Used by the mos tool to catch mos binaries incompatible with this file format
 manifest_version: 2017-09-29
